@@ -14,30 +14,38 @@
   "contributes": {
     "commands": [
       {
-        "command": "colorblocks.create-block-from-selection",
+        "command": "colorblocks.create-from-selection",
         "title": "Color Block: Highlight Selection"
       },
       {
-        "command": "colorblocks.remove-blocks-from-selection",
+        "command": "colorblocks.create-from-code-block",
+        "title": "Color Block: Highlight Code Block"
+      },
+      {
+        "command": "colorblocks.remove-from-selection",
         "title": "Color Block: Remove Blocks from Selection"
       },
       {
-        "command": "colorblocks.remove-blocks-from-file",
+        "command": "colorblocks.remove-from-file",
         "title": "Color Block: Remove All Blocks from Current File"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "colorblocks.create-block-from-selection",
+          "command": "colorblocks.create-from-selection",
           "group": "navigation"
         },
         {
-          "command": "colorblocks.remove-blocks-from-selection",
+          "command": "colorblocks.create-from-code-block",
           "group": "navigation"
         },
         {
-          "command": "colorblocks.remove-blocks-from-file",
+          "command": "colorblocks.remove-from-selection",
+          "group": "navigation"
+        },
+        {
+          "command": "colorblocks.remove-from-file",
           "group": "navigation"
         }
       ]

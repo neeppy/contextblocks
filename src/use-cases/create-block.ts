@@ -1,16 +1,12 @@
-import { Position, Range, window } from 'vscode';
+import { Position, Range, TextEditor, window } from 'vscode';
 import { Block, BlockStore } from '../store';
-import { getSelectionRange } from '../helpers';
 
-export const createBlockFromSelection = (store: BlockStore) => () => {
-  const editor = window.activeTextEditor;
-
-  if (!editor) {
-    return;
-  }
-
-  let { start, end } = getSelectionRange(editor);
-
+export function createBlock(
+  store: BlockStore,
+  editor: TextEditor,
+  start: number,
+  end: number,
+) {
   const intersectingBlocks = store.findBlocksIntersecting(
     editor.document.fileName,
     start,
@@ -41,7 +37,7 @@ export const createBlockFromSelection = (store: BlockStore) => () => {
   });
 
   editor.setDecorations(decoration, [range]);
-};
+}
 
 function mergeWithExistingBlocks(start: number, end: number, blocks: Block[]) {
   const rangeStarts = blocks.map((block) => block.range.start.line);

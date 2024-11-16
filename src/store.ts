@@ -15,8 +15,6 @@ export function createBlockStore() {
     addBlock(fileName: string, block: Block) {
       blocks[fileName] ??= [];
       blocks[fileName].push(block);
-
-      console.log('Added', block.range.start.line, block.range.end.line);
     },
     findAllFromFileName(fileName: string) {
       return blocks[fileName] ?? [];

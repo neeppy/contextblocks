@@ -2,7 +2,7 @@ import { window } from 'vscode';
 import { BlockStore } from '../store';
 import { getSelectionRange } from '../helpers';
 
-export const removeBlocksFromSelection = (store: BlockStore) => () => {
+export const removeFromSelection = (store: BlockStore) => () => {
   const editor = window.activeTextEditor;
 
   if (!editor) {
@@ -17,13 +17,9 @@ export const removeBlocksFromSelection = (store: BlockStore) => () => {
     end,
   );
 
-  console.log('Dropping', blocks.length, 'blocks');
-
   for (const block of blocks) {
     block.decoration.dispose();
   }
-
-  console.log('Dropped', blocks.length, 'blocks');
 
   store.deleteBlocksAtRange(editor.document.fileName, start, end);
 };

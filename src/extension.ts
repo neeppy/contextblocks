@@ -1,9 +1,10 @@
 import vscode from 'vscode';
 import { createBlockStore } from './store';
 import {
-  createBlockFromSelection,
-  removeBlocksFromSelection,
-  removeBlocksFromFile,
+  createFromSelection,
+  createFromCodeBlock,
+  removeFromSelection,
+  removeFromFile,
 } from './commands';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -15,25 +16,31 @@ export function activate(context: vscode.ExtensionContext) {
   // TODO feature: inline color picker for blocks???
   // TODO feature: color rotation
   // TODO feature: highlight from current line
-  // TODO feature: highlight from current code block
+  // TODO feature: highlight from current code block     -- DONE
   // TODO fix: handle event when editor is closed
   const createFromSelectionCommand = vscode.commands.registerCommand(
-    'colorblocks.create-block-from-selection',
-    createBlockFromSelection(blockStore),
+    'colorblocks.create-from-selection',
+    createFromSelection(blockStore),
+  );
+
+  const createFromCodeBlockCommand = vscode.commands.registerCommand(
+    'colorblocks.create-from-code-block',
+    createFromCodeBlock(blockStore),
   );
 
   const removeFromSelectionCommand = vscode.commands.registerCommand(
-    'colorblocks.remove-blocks-from-selection',
-    removeBlocksFromSelection(blockStore),
+    'colorblocks.remove-from-selection',
+    removeFromSelection(blockStore),
   );
 
   const removeFromFileCommand = vscode.commands.registerCommand(
-    'colorblocks.remove-blocks-from-file',
-    removeBlocksFromFile(blockStore),
+    'colorblocks.remove-from-file',
+    removeFromFile(blockStore),
   );
 
   context.subscriptions.push(
     createFromSelectionCommand,
+    createFromCodeBlockCommand,
     removeFromSelectionCommand,
     removeFromFileCommand,
   );

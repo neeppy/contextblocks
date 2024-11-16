@@ -1,7 +1,7 @@
 import { window } from 'vscode';
 import { BlockStore } from '../store';
 
-export const removeBlocksFromFile = (store: BlockStore) => () => {
+export const removeFromFile = (store: BlockStore) => () => {
   const editor = window.activeTextEditor;
 
   if (!editor) {

@@ -1,3 +1,4 @@
-export * from './create-block-from-selection';
-export * from './remove-blocks-from-selection';
-export * from './remove-blocks-from-file';
+export * from './create-from-selection';
+export * from './create-from-code-block';
+export * from './remove-from-selection';
+export * from './remove-from-file';
